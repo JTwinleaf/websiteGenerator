@@ -19,4 +19,4 @@ class HTMLNode:
         return output
     
     def __repr__(self):
-        pass
+        return f"HTMLNote({self.text}, {self.text_type.value}, {self.url})"
