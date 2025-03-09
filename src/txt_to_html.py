@@ -13,4 +13,6 @@ def text_node_to_html_node(text_node):
     }
     if text_node.type not in type_dict: # Checks for any unsupported types
         raise ValueError(f"Unsupported TextType: {text_node.type}")
-    
+    tag = type_dict[text_node.type][1]
+    props = type_dict[text_node.type][2]
+    html_node = LeafNode(tag, text_node.text, props)
