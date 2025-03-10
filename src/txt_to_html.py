@@ -17,10 +17,10 @@ def text_node_to_html_node(text_node):
 
     if text_node.type == TextType.LINK:
         props["href"] = text_node.url
-        return LeafNode(tag, text_node.value, props)
+        return LeafNode(tag, text_node.text, props)
     elif text_node.type == TextType.IMAGE:
         props["src"] = text_node.url
         props["alt"] = text_node.alt_text
         return LeafNode(tag, text_node.text, props)
     
-    return LeafNode(tag, text_node.value)
+    return LeafNode(tag, text_node.text)

@@ -11,11 +11,11 @@ class TestTextNode(unittest.TestCase):
     
     def test_noteq(self):
         node = TextNode("This is a miror", TextType.BOLD)
-        node2 = TextNode("You are a typo", TextType.NORMAL)
+        node2 = TextNode("You are a typo", TextType.TEXT)
         self.assertNotEqual(node, node2)
     
     def test_isinstance(self):
-        node = TextNode("I am not a TextNode", TextType.NORMAL)
+        node = TextNode("I am not a TextNode", TextType.TEXT)
         self.assertIsNone(node.url)
 
 if __name__ == "__main__":

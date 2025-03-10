@@ -16,7 +16,7 @@ class TextNode:
         self.alt_text = alt_text
     
     def __repr__(self):
-        return f"TextNode({self.text}, {self.text_type.value}, {self.url})"
+        return f"TextNode({self.text}, {self.text_type.value}, {self.url}, {self.alt_text})"
     
     def __eq__(self, other):
         if not isinstance(other, TextNode):

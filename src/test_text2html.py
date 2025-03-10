@@ -4,9 +4,7 @@ from textnode import *
 from txt_to_html import *
 
 class TestText2HTML(unittest.TestCase):
-    code = TextNode("Hackerman: I'm in...", TextType.CODE)
-    link = TextNode("I can guide you to that which knows all", TextType.LINK, "https://www.google.com")
-    image = TextNode("I am a beauty, aren't I?", TextType.IMAGE, "https://eskipaper.com/images/landscape-wallpaper-hd-10.jpg")
+
     def test_text_type_plain(self):
         plain = TextNode("I am plain like a hamburger", TextType.TEXT)
         plain_html = text_node_to_html_node(plain)
@@ -24,7 +22,28 @@ class TestText2HTML(unittest.TestCase):
     def test_text_type_italic(self):
         italic = TextNode("I smell slightly of olives and tomato sauce", TextType.ITALIC)
         italic_html = text_node_to_html_node(italic)
-        self.assertEqual = (italic_html.tag, "i")
-        self.assertEqual = (italic_html.value, "I smell slightly of olives and tomato sauce")
-        self.assertEqual = (italic_html.props, None)
+        self.assertEqual(italic_html.tag, "i")
+        self.assertEqual(italic_html.value, "I smell slightly of olives and tomato sauce")
+        self.assertEqual(italic_html.props, None)
+    
+    def test_text_type_code(self):
+        code = TextNode("Hackerman: I'm in...", TextType.CODE)
+        code_html = text_node_to_html_node(code)
+        self.assertEqual(code_html.tag, "code")
+        self.assertEqual(code_html.value, "Hackerman: I'm in...")
+        self.assertEqual(code_html.props, None)
+    
+    def test_text_type_link(self):
+        link = TextNode("I can guide you to that which knows all", TextType.LINK, "https://www.google.com")
+        link_html = text_node_to_html_node(link)
+        self.assertEqual(link_html.tag, "a")
+        self.assertEqual(link_html.value, "I can guide you to that which knows all")
+        self.assertEqual(link_html.props, {"href":"https://www.google.com"})
+    
+    def test_text_type_image(self):
+        image = TextNode("", TextType.IMAGE, "https://eskipaper.com/images/landscape-wallpaper-hd-10.jpg", "OwO What's this?")
+        image_html = text_node_to_html_node(image)
+        self.assertEqual(image_html.tag, "img")
+        self.assertEqual(image_html.value, "")
+        self.assertEqual(image_html.props, {"src": "https://eskipaper.com/images/landscape-wallpaper-hd-10.jpg", "alt": "OwO What's this?"})
     
