@@ -9,10 +9,11 @@ class TextType(Enum):
     IMAGE = "image"
 
 class TextNode:
-    def __init__(self, text, text_type, url=None):
+    def __init__(self, text, text_type, url=None, alt_text=None):
         self.text = text
         self.type = text_type
         self.url = url
+        self.alt_text = alt_text
     
     def __repr__(self):
         return f"TextNode({self.text}, {self.text_type.value}, {self.url})"
@@ -20,4 +21,4 @@ class TextNode:
     def __eq__(self, other):
         if not isinstance(other, TextNode):
             raise TypeError("Invalid Input")
-        return self.text == other.text and self.text_type == other.text_type and self.url == other.url
+        return self.text == other.text and self.type == other.type and self.url == other.url
