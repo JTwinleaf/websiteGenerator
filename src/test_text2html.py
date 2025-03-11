@@ -47,3 +47,12 @@ class TestText2HTML(unittest.TestCase):
         self.assertEqual(image_html.value, "")
         self.assertEqual(image_html.props, {"src": "https://eskipaper.com/images/landscape-wallpaper-hd-10.jpg", "alt": "OwO What's this?"})
     
+    def test_link_no_url(self):
+        node = TextNode("I go nowhere!", TextType.LINK)
+        with self.assertRaises(ValueError):
+            html_node = text_node_to_html_node(node)
+    
+    def test_no_text_type(self):
+        node = TextNode("I am broken...", TextType.NONE)
+        with self.assertRaises(ValueError):
+            html_node = text_node_to_html_node(node)
