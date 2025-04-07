@@ -15,6 +15,11 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
         parts = node.text.split(delimiter)
 
         for i, part in enumerate(parts):
+            if part == "":
+                if inside_delimiter:
+                    formatted_text += ""
+                continue
+
             if inside_delimiter:
                 formatted_text += part
 
