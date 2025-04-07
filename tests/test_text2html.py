@@ -1,7 +1,7 @@
 import unittest
-from htmlnode import *
-from textnode import *
-from txt_to_html import *
+from website_generator.src.htmlnode import *
+from website_generator.src.textnode import *
+from website_generator.src.txt_to_html import *
 
 class TestText2HTML(unittest.TestCase):
 
