@@ -37,4 +37,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
     if inside_delimiter:
         raise ValueError("Unclosed delimiter found in text node.")
 
-    return new_nodes   
+    return new_nodes
+
+def extract_markdown_link(text):
+    pass
